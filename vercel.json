@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "http://alfa-store-officials.alfamarket2.my.id:4367/api/:path*"
+    }
+  ]
+}
