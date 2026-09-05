@@ -3,229 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YanzClean | Developer Yanz Storu</title>
-    <!-- Tailwind CSS -->
+    <title>Yanz Clean | by Yanz Storu</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- AOS Animation CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- SweetAlert2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap');
-        
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #050505;
-            color: #ffffff;
-            font-family: 'Space Grotesk', sans-serif;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
-            background-size: 30px 30px;
-            z-index: -2;
-        }
-
-        .bg-glow {
-            position: fixed;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80vw; height: 80vw;
-            background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, rgba(0,0,0,0) 70%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .card-main {
-            background: #0a0a0a;
-            border-radius: 20px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8),
-                        inset 0 1px 1px rgba(255, 255, 255, 0.05);
-        }
-
-        .upload-area {
-            border: 2px dashed rgba(16, 185, 129, 0.3);
-            background: rgba(16, 185, 129, 0.02);
-            transition: all 0.3s ease;
-        }
-        .upload-area:hover {
-            border-color: #10b981;
-            background: rgba(16, 185, 129, 0.08);
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
-        }
-
-        .input-custom {
-            background: #000000;
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            color: #10b981;
-            transition: all 0.3s ease;
-        }
-        .input-custom:focus {
-            border-color: #34d399;
-            box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
-            outline: none;
-        }
-        .input-custom::placeholder {
-            color: rgba(16, 185, 129, 0.3);
-        }
-
-        .rgb-loading-wrapper {
-            display: none;
-            width: 100%;
-            background: rgba(255,255,255,0.05);
-            border-radius: 50px;
-            overflow: hidden;
-            margin-top: 15px;
+        @keyframes rgbGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         .rgb-bar {
-            height: 6px;
-            width: 0%;
-            background: linear-gradient(90deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-            background-size: 200% auto;
-            animation: rgb-glow 2s linear infinite;
-            border-radius: 50px;
+            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+            background-size: 200% 200%;
+            animation: rgbGlow 1.5s linear infinite;
             transition: width 0.2s ease;
         }
-        @keyframes rgb-glow {
-            0% { background-position: 0% center; }
-            100% { background-position: 200% center; }
-        }
-
-        .swal2-popup { border: 1px solid rgba(16, 185, 129, 0.3) !important; border-radius: 20px !important; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-center p-4">
+<body class="bg-gray-950 text-white font-sans min-h-screen flex flex-col justify-between relative overflow-hidden selection:bg-blue-500 selection:text-white">
 
     <script>
-        const BACKEND_URL = '';
+        const BACKEND_URL = 'https://alfa-store-officials.alfamarket2.my.id:4367';
     </script>
 
-    <div class="bg-glow"></div>
-
     <div id="donationPopup" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-        <div class="card-main p-6 md:p-8 text-center max-w-sm w-full">
-            <div class="w-16 h-16 bg-emerald-500/10 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-500/30">
-                <i class="fa-solid fa-hand-holding-dollar text-2xl"></i>
+        <div class="bg-gray-900 p-6 md:p-8 rounded-2xl shadow-[0_0_30px_rgba(234,179,8,0.2)] text-center max-w-sm w-full border border-gray-800">
+            <div class="w-16 h-16 bg-yellow-500/10 text-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4 border border-yellow-500/30">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
             </div>
-            <h2 class="text-2xl font-bold mb-2 text-emerald-400">Support Developer</h2>
+            <h2 class="text-2xl font-bold mb-2 text-yellow-400">Support Developer</h2>
             <p class="mb-6 text-gray-400 text-sm leading-relaxed">Bantu support developer <span class="text-white font-semibold">Yanz Storu</span> dengan cara donasi agar server dan project ini terus aktif!</p>
             <div class="flex items-center justify-center gap-3">
-                <button onclick="closePopup()" class="w-1/2 py-2.5 bg-zinc-900 hover:bg-zinc-800 text-gray-300 rounded-xl font-medium transition border border-zinc-800">Tutup</button>
-                <a href="https://saweria.co/yanzstoru" target="_blank" class="w-1/2 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-black rounded-xl font-bold transition shadow-lg shadow-emerald-500/20 flex items-center justify-center gap-1">
+                <button onclick="closePopup()" class="w-1/2 py-2.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-xl font-medium transition border border-gray-700">Close</button>
+                <a href="https://saweria.co/yanzstoru" target="_blank" class="w-1/2 py-2.5 bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-400 hover:to-amber-500 text-black rounded-xl font-bold transition shadow-lg shadow-yellow-500/20 flex items-center justify-center gap-1">
                     <span>Donasi</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </a>
             </div>
         </div>
     </div>
 
-    <div data-aos="fade-down" data-aos-duration="1000" class="text-center mb-8 mt-6 z-10">
-        <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-white mb-2">
-            Yanz<span class="text-emerald-500">Clean</span>
-        </h1>
-        <p class="text-emerald-400/70 tracking-widest text-xs md:text-sm uppercase font-semibold">Developer Yanz Storu</p>
-    </div>
+    <header class="p-4 flex justify-center items-center bg-gray-900/50 backdrop-blur-md border-b border-gray-800/80 sticky top-0 z-40">
+        <div class="text-center">
+            <h1 class="text-xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500">YANZ CLEAN</h1>
+            <p class="text-[10px] text-gray-500 tracking-widest font-mono">DEV BY YANZ STORU</p>
+        </div>
+    </header>
 
-    <main data-aos="zoom-in" data-aos-duration="1200" class="w-full max-w-lg z-10">
-        <div class="card-main p-8 flex flex-col gap-6">
+    <main class="flex-grow flex items-center justify-center p-4 relative z-10">
+        <div class="bg-gray-900/90 backdrop-blur-xl p-6 md:p-8 rounded-3xl shadow-2xl max-w-md w-full border border-gray-800">
+            <h2 class="text-xl font-bold text-center mb-6 text-gray-100">Upload Video HD</h2>
             
-            <form id="uploadForm" class="flex flex-col gap-5">
-                
-                <div class="relative flex flex-col">
-                    <label class="text-sm font-semibold text-emerald-400 mb-2"><i class="fa-solid fa-film"></i> Upload Video</label>
-                    <div id="drop-zone" class="upload-area rounded-xl p-8 text-center cursor-pointer relative overflow-hidden group" onclick="document.getElementById('videoInput').click()">
-                        <input type="file" id="videoInput" accept="video/*" class="hidden" onchange="updateFileName(this)" required>
-                        <i class="fa-solid fa-cloud-arrow-up text-4xl text-emerald-600/50 group-hover:text-emerald-400 transition-colors duration-300 mb-2"></i>
-                        <p id="fileName" class="text-sm text-emerald-600/70 group-hover:text-emerald-400 transition-colors">Klik atau seret video ke sini</p>
-                    </div>
+            <div class="border-2 border-dashed border-gray-700 hover:border-blue-500/50 rounded-2xl p-8 text-center mb-5 transition cursor-pointer bg-gray-950/40 group" onclick="document.getElementById('videoInput').click()">
+                <div class="w-12 h-12 bg-blue-500/10 text-blue-400 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
                 </div>
+                <p class="text-sm font-medium text-gray-300" id="fileName">Klik / Tarik file video ke sini</p>
+                <p class="text-xs text-gray-500 mt-1">Format MP4, MOV, atau AVI (Maksimal 500MB)</p>
+                <input type="file" id="videoInput" accept="video/*" class="hidden" onchange="updateFileName(this)">
+            </div>
 
-                <div class="flex flex-col">
-                    <label class="text-sm font-semibold text-emerald-400 mb-2"><i class="fa-brands fa-whatsapp"></i> Nomor WhatsApp</label>
-                    <input type="number" id="waNumber" placeholder="Contoh: 62857..." class="input-custom w-full rounded-xl p-4 font-mono text-lg" required>
+            <div class="mb-6">
+                <label class="block text-xs font-semibold text-gray-400 mb-1.5">Nomor WhatsApp Penerima</label>
+                <input type="text" id="waNumber" placeholder="628xxxxxxxxxx" class="w-full p-3 bg-gray-950/60 rounded-xl border border-gray-700/80 focus:outline-none focus:border-blue-500 text-sm text-gray-200">
+            </div>
+
+            <button onclick="startUpload()" id="btnUpload" class="w-full py-3.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:opacity-95 rounded-xl font-bold text-sm tracking-wide transition shadow-lg shadow-indigo-500/25 flex items-center justify-center gap-2">
+                <span>UPLOAD NOW</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </button>
+
+            <div id="progressContainer" class="mt-6 hidden">
+                <div class="flex justify-between text-xs mb-2 font-mono text-gray-400">
+                    <span id="statusText">Mengunggah...</span>
+                    <span id="progressText" class="text-blue-400 font-bold">0%</span>
                 </div>
-
-                <div id="progressContainer" class="hidden mt-2">
-                    <div class="flex justify-between text-xs mb-1.5 font-mono text-emerald-400">
-                        <span id="statusText">Mengunggah...</span>
-                        <span id="progressText" class="font-bold">0%</span>
-                    </div>
-                    <div class="rgb-loading-wrapper" style="display: block;">
-                        <div class="rgb-bar" id="progressBar"></div>
-                    </div>
+                <div class="w-full h-3 bg-gray-950 rounded-full overflow-hidden border border-gray-800 p-0.5">
+                    <div id="progressBar" class="h-full w-0 rgb-bar rounded-full"></div>
                 </div>
-
-                <button type="submit" id="btnUpload" class="w-full bg-emerald-600 hover:bg-emerald-500 text-black font-bold py-4 px-6 rounded-xl transform transition hover:scale-[1.02] active:scale-95 uppercase tracking-wider mt-2 shadow-[0_0_15px_rgba(16,185,129,0.3)]">
-                    <i class="fa-solid fa-rocket mr-2"></i> Upload Sekarang
-                </button>
-            </form>
-
-            <div class="h-px w-full bg-emerald-900/50 my-2"></div>
-
-            <div class="grid grid-cols-1 gap-3">
-                <a href="https://chat.whatsapp.com/EEiNqsNkOmgEKB5IEpY6Sy?s=cl&p=a&mlu=0&ilr=4" target="_blank" class="flex items-center justify-center gap-2 w-full bg-black border border-emerald-800 hover:border-emerald-400 hover:bg-emerald-900/20 text-emerald-400 font-semibold py-3 px-4 rounded-xl transition duration-300">
-                    <i class="fa-solid fa-users"></i> Join Komunitas
-                </a>
-                
-                <button onclick="showTutorial()" class="flex items-center justify-center gap-2 w-full bg-black border border-emerald-800 hover:border-emerald-400 hover:bg-emerald-900/20 text-emerald-400 font-semibold py-3 px-4 rounded-xl transition duration-300">
-                    <i class="fa-solid fa-book-open"></i> Cara Penggunaan
-                </button>
-                
-                <a href="https://wa.me/6285783587546" target="_blank" class="flex items-center justify-center gap-2 w-full bg-black border border-red-900/50 hover:border-red-500 hover:bg-red-900/20 text-red-500 font-semibold py-3 px-4 rounded-xl transition duration-300">
-                    <i class="fa-solid fa-bug"></i> Lapor Masalah Server
-                </a>
             </div>
         </div>
     </main>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <footer class="p-4 text-center text-xs text-gray-600 border-t border-gray-900">
+        &copy; 2026 Yanz Clean. Developed by Yanz Storu.
+    </footer>
+
     <script>
-        AOS.init();
-
-        function closePopup() { 
-            document.getElementById('donationPopup').style.display = 'none'; 
-        }
-
+        function closePopup() { document.getElementById('donationPopup').style.display = 'none'; }
+        
         function updateFileName(input) {
             document.getElementById('fileName').innerText = input.files[0] ? input.files[0].name : "Klik / Tarik file video ke sini";
         }
 
-        function showTutorial() {
-            Swal.fire({
-                title: '<span style="color:#10b981">Cara Pakai Bot</span>',
-                html: `
-                    <div style="text-align: left; font-size: 14px; color: #a1a1aa; line-height: 1.6;">
-                        <p>1. Masukkan file video yang ingin dijernihkan.</p>
-                        <p>2. Pastikan kamu sudah join di grup WhatsApp.</p>
-                        <p>3. Masukkan nomor WA kamu (Awali 62).</p>
-                        <p>4. Klik Upload dan tunggu proses selesai.</p>
-                        <p>5. Bot otomatis mengirim video HD ke dalam grup dan men-tag nomormu.</p>
-                    </div>
-                `,
-                background: '#0a0a0a',
-                confirmButtonText: 'Paham!',
-                buttonsStyling: false,
-                customClass: { confirmButton: 'bg-emerald-600 text-black font-bold px-6 py-2 rounded-xl mt-4 hover:bg-emerald-500 transition' }
-            });
-        }
-
-        document.getElementById('uploadForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
+        function startUpload() {
             const file = document.getElementById('videoInput').files[0];
             const wa = document.getElementById('waNumber').value;
             
             if (!file || !wa) return alert("Pilih file video dan masukkan nomor WhatsApp!");
+
+            const maxSizeInBytes = 500 * 1024 * 1024;
+            if (file.size > maxSizeInBytes) {
+                alert("Ukuran video terlalu besar! Batas maksimal adalah 500MB.");
+                return;
+            }
 
             document.getElementById('progressContainer').classList.remove('hidden');
             const bar = document.getElementById('progressBar');
@@ -241,7 +121,7 @@
             formData.append('number', wa);
 
             const xhr = new XMLHttpRequest();
-            xhr.open('POST', `${BACKEND_URL}/api/upload`, true);
+            xhr.open('POST', `${BACKEND_URL}/upload`, true);
 
             xhr.upload.onprogress = function(e) {
                 if (e.lengthComputable) {
@@ -255,42 +135,19 @@
             xhr.onload = function() {
                 btnUpload.disabled = false;
                 btnUpload.classList.remove('opacity-50', 'cursor-not-allowed');
-                
+
                 if (xhr.status === 200) {
-                    Swal.fire({
-                        title: 'Berhasil! 🎉',
-                        html: '<p style="color:#a1a1aa;">Video sedang dikirim ke grup dan nomor kamu sudah di-tag!</p>',
-                        icon: 'success',
-                        background: '#0a0a0a', color: '#fff',
-                        confirmButtonText: 'Oke',
-                        buttonsStyling: false,
-                        customClass: { confirmButton: 'bg-emerald-600 text-black font-bold px-6 py-2 rounded-xl hover:bg-emerald-500' }
-                    });
+                    alert("✅ Sukses! Video sudah HD dan sedang dikirim oleh bot ke grup WhatsApp.");
                     bar.style.width = '0%';
                     document.getElementById('progressContainer').classList.add('hidden');
-                    document.getElementById('uploadForm').reset();
-                    document.getElementById('fileName').innerText = "Klik atau seret video ke sini";
+                    document.getElementById('videoInput').value = '';
+                    document.getElementById('waNumber').value = '';
+                    document.getElementById('fileName').innerText = "Klik / Tarik file video ke sini";
                 } else if (xhr.status === 403) {
-                    Swal.fire({
-                        title: 'Belum Join Grup 🙈',
-                        html: '<p style="color:#a1a1aa;">Nomor WA kamu belum terdaftar di grup.<br>Yuk gabung dulu!</p>',
-                        icon: 'warning',
-                        background: '#0a0a0a', color: '#fff',
-                        confirmButtonText: 'Tutup',
-                        buttonsStyling: false,
-                        customClass: { confirmButton: 'bg-amber-500 text-black font-bold px-6 py-2 rounded-xl hover:bg-amber-400' }
-                    });
+                    alert("❌ Gagal: Nomor WhatsApp kamu belum terdaftar di grup komunitas!");
                     document.getElementById('progressContainer').classList.add('hidden');
                 } else {
-                    Swal.fire({
-                        title: 'Upload Gagal 💔',
-                        text: xhr.responseText || 'Terjadi kesalahan pada server.',
-                        icon: 'error',
-                        background: '#0a0a0a', color: '#fff',
-                        confirmButtonText: 'Oke',
-                        buttonsStyling: false,
-                        customClass: { confirmButton: 'bg-red-600 text-white px-6 py-2 rounded-xl hover:bg-red-500' }
-                    });
+                    alert("❌ Gagal: " + xhr.responseText);
                     document.getElementById('progressContainer').classList.add('hidden');
                 }
             };
@@ -298,20 +155,12 @@
             xhr.onerror = function() {
                 btnUpload.disabled = false;
                 btnUpload.classList.remove('opacity-50', 'cursor-not-allowed');
-                Swal.fire({
-                    title: 'Koneksi Gagal 💔',
-                    text: 'Tidak dapat terhubung ke server Bot. Pastikan server Pterodactyl dalam keadaan ON!',
-                    icon: 'error',
-                    background: '#0a0a0a', color: '#fff',
-                    confirmButtonText: 'Oke',
-                    buttonsStyling: false,
-                    customClass: { confirmButton: 'bg-red-600 text-white px-6 py-2 rounded-xl hover:bg-red-500' }
-                });
+                alert("❌ Tidak dapat terhubung ke server Bot. Pastikan server Pterodactyl dalam keadaan ON!");
                 document.getElementById('progressContainer').classList.add('hidden');
             };
 
             xhr.send(formData);
-        });
+        }
     </script>
 </body>
 </html>
